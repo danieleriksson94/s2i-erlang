@@ -1,0 +1,83 @@
+
+{
+  "kind": "ImageStreamList",
+  "apiVersion": "v1",
+  "metadata": {},
+  "items": [
+    {
+      "kind": "ImageStream",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "erlang"
+      },
+      "spec": {
+        "tags": [
+          {
+            "name": "20.3",
+            "annotations": {
+              "description": "Build and run Erlang 20.3 applications",
+              "tags": "builder,erlang",
+              "supports": "erlang:20.3,erlang:20,erlang",
+              "version": "20.3"
+            },
+            "from": {
+              "kind": "DockerImage",
+              "name": "jshmrtn/s2i-erlang:20.3"
+            },
+            "importPolicy": {
+              "scheduled": true
+            }
+          },
+          {
+            "name": "20",
+            "annotations": {
+              "description": "Build and run Erlang 20 applications",
+              "tags": "builder,erlang",
+              "supports": "erlang:20,erlang",
+              "version": "20"
+            },
+            "from": {
+              "kind": "DockerImage",
+              "name": "jshmrtn/s2i-erlang:20"
+            },
+            "importPolicy": {
+              "scheduled": true
+            }
+          },
+          {
+            "name": "21.0",
+            "annotations": {
+              "description": "Build and run Erlang 21.0 applications",
+              "tags": "builder,erlang",
+              "supports": "erlang:21.0,erlang:21,erlang",
+              "version": "21.0"
+            },
+            "from": {
+              "kind": "DockerImage",
+              "name": "jshmrtn/s2i-erlang:21.0"
+            },
+            "importPolicy": {
+              "scheduled": true
+            }
+          },
+          {
+            "name": "21",
+            "annotations": {
+              "description": "Build and run Erlang 21 applications",
+              "tags": "builder,erlang",
+              "supports": "erlang:21,erlang",
+              "version": "21"
+            },
+            "from": {
+              "kind": "DockerImage",
+              "name": "jshmrtn/s2i-erlang:21"
+            },
+            "importPolicy": {
+              "scheduled": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
