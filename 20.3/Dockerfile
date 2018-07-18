@@ -1,10 +1,15 @@
 FROM openshift/base-centos7
 
-ENV ERLANG_VERSION 21.0
+ENV ERLANG_VERSION 20.3
 
 LABEL io.k8s.description="Platform for building and running an erlang app" \
       io.k8s.display-name="build-erlang" \
-      io.openshift.tags="builder,erlang"
+      io.openshift.tags="builder,erlang" \
+      com.redhat.dev-mode="DEV_MODE:false" \
+      com.redhat.deployments-dir="/opt/app-root/src" \
+      name="jshmrtn/s2i-erlang" \
+      maintainer="Jonatan Männchen <maennchen@joshmartin.ch>" \
+      version="$ERLANG_VERSION"
 
 # Install Erlang
 RUN set -x \
@@ -45,12 +50,12 @@ RUN set -x \
   && cd .. \
   && rm -rf otp_src_${ERLANG_VERSION}
 
-COPY ./s2i/bin/ /usr/libexec/s2i
+# Copy the S2I scripts from the image to $STI_SCRIPTS_PATH
+COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 
-RUN chown -R 1001:1001 /opt/app-root
-
+# Drop the root user and make the content of /opt/app-root owned by user 1001
+RUN chown -R 1001:0 /opt/app-root && chmod -R ug+rwx /opt/app-root
 USER 1001
 
-EXPOSE 4000
-
-CMD ["/usr/libexec/s2i/usage"]
+# Set the default CMD to print the usage of the language image
+CMD $STI_SCRIPTS_PATH/usage
