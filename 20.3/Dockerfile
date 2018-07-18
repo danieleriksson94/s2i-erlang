@@ -11,6 +11,11 @@ LABEL io.k8s.description="Platform for building and running an erlang app" \
       maintainer="Jonatan Männchen <maennchen@joshmartin.ch>" \
       version="$ERLANG_VERSION"
 
+RUN localedef -i en_US -f UTF-8 en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LC_CTYPE en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
 # Install Erlang
 RUN set -x \
   && yum install -y --setopt=tsflags=nodocs \

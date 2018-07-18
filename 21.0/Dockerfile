@@ -50,6 +50,11 @@ RUN set -x \
   && cd .. \
   && rm -rf otp_src_${ERLANG_VERSION}
 
+RUN localedef -i en_US -f UTF-8 en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LC_CTYPE en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
 # Copy the S2I scripts from the image to $STI_SCRIPTS_PATH
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 
