@@ -31,7 +31,7 @@ RUN set -x \
   && rm -rf otp_src_${ERLANG_VERSION}.tar.gz \
   && cd otp_src_${ERLANG_VERSION} \
   && export ERL_TOP=`pwd` \
-  && ./configure \
+  && LIBS="/usr/lib64/libcrypto.so" ./configure --enable-static-nifs \
   && make \
   && make release_tests \
   && make install \
