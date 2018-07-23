@@ -14,6 +14,7 @@ LABEL io.k8s.description="Platform for building and running an erlang app" \
 # Install Erlang
 RUN set -x \
   && yum install -y --setopt=tsflags=nodocs \
+    git \
     autoconf \
     epel-release \
     gcc \
