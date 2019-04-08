@@ -77,6 +77,22 @@
             }
           },
           {
+            "name": "21.3",
+            "annotations": {
+              "description": "Build and run Erlang 21.3 applications",
+              "tags": "builder,erlang",
+              "supports": "erlang:21.1,erlang:21,erlang",
+              "version": "21.3"
+            },
+            "from": {
+              "kind": "DockerImage",
+              "name": "jshmrtn/s2i-erlang:21.3"
+            },
+            "importPolicy": {
+              "scheduled": true
+            }
+          },
+          {
             "name": "21",
             "annotations": {
               "description": "Build and run Erlang 21 applications",
