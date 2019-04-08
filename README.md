@@ -15,7 +15,8 @@ Erlang versions currently provided are:
 
 * `20.3` (Tags: `20.3`, `20`)
 * `21.0` (Tags: `21.0`)
-* `21.1` (Tags: `21.1`, `21`, `latest`)
+* `21.1` (Tags: `21.1`)
+* `21.1` (Tags: `21.3`, `21`, `latest`)
 
 CentOS versions currently supported are:
 * CentOS7

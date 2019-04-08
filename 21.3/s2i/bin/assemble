@@ -1,0 +1,32 @@
+#!/bin/bash -e
+#
+# S2I assemble script for erlang images
+#
+# For more information refer to the documentation:
+# https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+if [[ "$1" == "-h" ]]; then
+  # If the assemble script is executed with '-h' flag,
+  # print the usage.
+  exec /usr/libexec/s2i/usage
+fi
+
+echo "This image does not yet contain assemble instructions for erlang"
+echo "PR's are wellcome"
+exit 1
+
+# # Restore artifacts from the previous build (if they exist).
+# #
+# if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
+#   echo "---> Restoring build artifacts..."
+#   mv /tmp/artifacts/. ./
+# fi
+#
+# echo "---> Installing application source..."
+# cp -Rf /tmp/src/. ./
+#
+# echo "---> Building application from source..."
+#
+#
+# echo "---> Completed"
