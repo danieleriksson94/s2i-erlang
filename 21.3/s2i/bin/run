@@ -7,6 +7,9 @@
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
 
-echo "This image does not yet contain run instructions for erlang"
-echo "PR's are wellcome"
-exit 1
+echo "Erlang on openshift, the future is here!"
+
+# Run script
+scriptname="helloworld"
+
+erl -noshell -s $scriptname start -s init stop
