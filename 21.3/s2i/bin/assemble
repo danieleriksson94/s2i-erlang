@@ -12,21 +12,22 @@ if [[ "$1" == "-h" ]]; then
   exec /usr/libexec/s2i/usage
 fi
 
-echo "This image does not yet contain assemble instructions for erlang"
-echo "PR's are wellcome"
-exit 1
+# Restore artifacts from the previous build (if they exist).
+if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
+  echo "---> Restoring build artifacts..."
+  mv /tmp/artifacts/. ./
+fi
 
-# # Restore artifacts from the previous build (if they exist).
-# #
-# if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
-#   echo "---> Restoring build artifacts..."
-#   mv /tmp/artifacts/. ./
-# fi
-#
-# echo "---> Installing application source..."
-# cp -Rf /tmp/src/. ./
-#
-# echo "---> Building application from source..."
-#
-#
-# echo "---> Completed"
+# Install application
+if [ "$(ls /tmp/src/ 2>/dev/null)" ]; then
+  echo "---> Installing application source..."
+  cp -Rf /tmp/src/. ./
+fi
+
+# Set permissions
+echo "---> Set permissions on static dir..."
+fix-permissions "$HOME"
+
+echo "---> Completed"
+
+exit 0
